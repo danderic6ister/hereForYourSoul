@@ -1,0 +1,123 @@
+{
+  "contractName": "ereForYourSoul",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/hereForYourSoul.sol\":\"ereForYourSoul\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/hereForYourSoul.sol\":{\"keccak256\":\"0x442b5d5971f1849c84f75a8d8fb4fd90704b4488eb6c1db09fd20fe0db9acd79\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1e6f558b6597a6d2fa56ba4765a3d142580da8c12d0c38cddabfcb4c05ba83d1\",\"dweb:/ipfs/QmbC1nccdtLXsXSTb1CXeaLkVKK1qHKLPUCBuDQaZrbvqa\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220ee821f70e15cfbcedd411ad9766dc18405dc5053b8a3139c14dd70b0e674ced664736f6c63430008030033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220ee821f70e15cfbcedd411ad9766dc18405dc5053b8a3139c14dd70b0e674ced664736f6c63430008030033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "64:29:0:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "64:29:0:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.3;\r\n\r\n\r\ncontract ereForYourSoul{\r\n\r\n}",
+  "sourcePath": "C:\\Users\\Daniel Awodeji\\Desktop\\hereForYourSoul\\truffle\\contracts\\hereForYourSoul.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/hereForYourSoul.sol",
+    "exportedSymbols": {
+      "ereForYourSoul": [
+        2
+      ]
+    },
+    "id": 3,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".3"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "ereForYourSoul",
+        "nameLocation": "73:14:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "64:29:0"
+      }
+    ],
+    "src": "35:58:0"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/hereForYourSoul.sol",
+    "exportedSymbols": {
+      "ereForYourSoul": [
+        2
+      ]
+    },
+    "id": 3,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".3"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "ereForYourSoul",
+        "nameLocation": "73:14:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "64:29:0"
+      }
+    ],
+    "src": "35:58:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.3+commit.8d00100c.Emscripten.clang"
+  },
+  "networks": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x7df28c77210B84EB3E57633480e8Dc2d1A61Ff13",
+      "transactionHash": "0x855844eb6694ec65922d9cd5cb3a888173f02af73d975904c1f7d61b483f4f47"
+    }
+  },
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-07-07T16:55:23.306Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
