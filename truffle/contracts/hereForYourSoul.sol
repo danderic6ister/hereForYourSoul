@@ -10,9 +10,12 @@ import "../node_modules/@openzeppelin/contracts/utils/cryptography/MerkleProof.s
 
 
 contract HereForYourSoul is ERC721A,Ownable{
-
+    // @dev set the total supply of the collection
     uint256 public immutable altarSupply = 5555;
+    
+    //@dev sets the amount minted to the teams vault
     uint256 public mintToCOVEN = 55;
+    
     uint256 public maxTx = 1;
     uint256 public sorcererMint = 2;
     uint256 public commonsMint =1;
@@ -36,6 +39,7 @@ contract HereForYourSoul is ERC721A,Ownable{
     }
     function mintToCoven()public onlyOwner{
         _mint(msg.sender,mintToCOVEN);
+        sorcererMintIsActive = true;
 
     }
 
