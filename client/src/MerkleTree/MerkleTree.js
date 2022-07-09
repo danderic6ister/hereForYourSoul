@@ -2,12 +2,12 @@ import { MerkleTree } from 'merkletreejs';
 import keccak256 from 'keccak256';
 
 let whitelistedAddresses = [
-  '0xbC486d04D7009d26159Bf57646A247f0925aC239',
-  '0xdeEE2CD20f146FECAB853667a56C69efc6Fe9CCF',
-  '0x366258e7b21900ca65d6bACD83D6393E04d8D03D',
+  '0x0bdb32Da2Cce8FD473FcC5aC6248FCb4a3F11Fd0',
+  '0xEca2B935c6892185BF99f7994Ec7d45AcE85F9C1',
+  '0x9EC901767Fbb24f76b3725a2f1A1067991c5657a',
 ];
 
-let addr = '0x366258e7b21900ca65d6bACD83D6393E04d8D03D';
+let addr = '0x9EC901767Fbb24f76b3725a2f1A1067991c5657a';
 
 let leafNode = whitelistedAddresses.map((x) => keccak256(x));
 const tree = new MerkleTree(leafNode, keccak256, { sortPairs: true });

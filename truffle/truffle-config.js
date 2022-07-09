@@ -23,7 +23,7 @@ module.exports = {
     //
     development: {
       host: '127.0.0.1', // Localhost (default: none)
-      port: 8545, // Standard Ethereum port (default: none)
+      port: 7545, // Standard Ethereum port (default: none)
       network_id: '4', // Any network (default: none)
     },
 
@@ -33,7 +33,7 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(
           process.env.seed,
-          `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`
+          `wss://rinkeby.infura.io/ws/v3/${process.env.INFURA_API_KEY}`
         ),
       network_id: 4, // Rinkeby's id
       gas: 5500000,

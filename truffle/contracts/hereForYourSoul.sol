@@ -5,7 +5,6 @@ pragma solidity ^0.8.4;
 import "../node_modules/erc721a/contracts/ERC721A.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 import "../node_modules/@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
-
 contract HereForYourSoul is ERC721A,Ownable{
     // @dev set the total supply of the collection
     uint256 public altarSupply = 5555;
@@ -17,12 +16,12 @@ contract HereForYourSoul is ERC721A,Ownable{
     uint256 public immutable sorcererMint = 2;
     // Saves Gas since we are minting just one 
     // uint256 public immutable commonsMint =1;
-    bytes32 public immutable merkleRoot = 0x1bfab583593848c26f149cb904997f62124659eca80be648880813d6411fbc3b;
+    bytes32 public immutable merkleRoot = 0xbe3a35197763e6a487d1baf617545ecbff5e9c88b7ed3a814005564bc718ed9b;
 
 
     string public baseURI = "ipfs://toBeSet/";
     bool public  revealed ;
-    bool public sorcererMintIsActive;
+    bool public sorcererMintIsActive = true;
     bool public commonsMintIsActive;
     bool public  teamHasClaimed;
 
@@ -36,11 +35,13 @@ contract HereForYourSoul is ERC721A,Ownable{
     function toggleCommonsMint() external onlyOwner{
         commonsMintIsActive = !commonsMintIsActive;
     }
+    function toggleReveal() external onlyOwner{
+        revealed = !revealed;
+    }
 
     function mintToCoven()public onlyOwner{
         require(!teamHasClaimed);
         _mint(msg.sender,mintToCOVEN);
-        sorcererMintIsActive = true;
         teamHasClaimed = true;
 
     }
@@ -92,17 +93,26 @@ contract HereForYourSoul is ERC721A,Ownable{
 
 
     }
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        if (!_exists(tokenId)) revert URIQueryForNonexistentToken();
 
-}    
+        string memory baseURI_ = _baseURI();
 
-// //     //
-//     [
-//   "0xcefcf29b4e023f4f06af91658414b2c466bd96c3974d4192aaca513a27ccbdf2",
-//   "0x1c04101d820837d31c90304f93c972bb74e88d097df556e82bed5ddda0325831"
-// ]
-// // // // 
-// ["0x523bab317f97a6c3bd085b8092501712bbd7f538a83f76171561ed61f319c995","0x1c04101d820837d31c90304f93c972bb74e88d097df556e82bed5ddda0325831"]
+        if(revealed){
+            return bytes(baseURI_).length != 0 ? string(abi.encodePacked(baseURI_, _toString(tokenId),".json")) : '';
+        }else{
+            return string(abi.encodePacked("ipfs://unrevealedHash/","hidden.json" ));
+        }
+        
+    }
+     function _startTokenId() internal view virtual override returns (uint256) {
+        return 1;
+    }
 
-// // ["0x393fd3a706d508a2a3d970f3288798a446c904cd61be94ce00eae67afbb6c2ca"]
+}   
+// 
+// ["0x7d22b128e982b43eb57c7a0142761c730c5dee9f489bf8b5d1b4c5022f5c2e8f","0x04a01326e014116187743337e92dfe097ae3600f491c6d45f09f8f3f883c9437"] 
 
-// }
+// ["0xbd408b9e1c3182bb2fd44a1112323a3803b2965754c83f9f420b44f63d190f39","0x04a01326e014116187743337e92dfe097ae3600f491c6d45f09f8f3f883c9437"]
+
+// ["0x76ffeac6cadc713c9d265483fe3ccba807660cbb4ab74dfd0ccd8d4a51e3ba44"]
