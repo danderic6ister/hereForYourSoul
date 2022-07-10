@@ -20,7 +20,7 @@ contract HereForYourSoul is ERC721A,Ownable{
 
 
     string public baseURI = "ipfs://toBeSet/";
-    bool public  revealed ;
+    bool public  revealed = true ;
     bool public sorcererMintIsActive = true;
     bool public commonsMintIsActive;
     bool public  teamHasClaimed;
@@ -35,9 +35,7 @@ contract HereForYourSoul is ERC721A,Ownable{
     function toggleCommonsMint() external onlyOwner{
         commonsMintIsActive = !commonsMintIsActive;
     }
-    function toggleReveal() external onlyOwner{
-        revealed = !revealed;
-    }
+    
 
     function mintToCoven()public onlyOwner{
         require(!teamHasClaimed);
@@ -98,11 +96,10 @@ contract HereForYourSoul is ERC721A,Ownable{
 
         string memory baseURI_ = _baseURI();
 
-        if(revealed){
-            return bytes(baseURI_).length != 0 ? string(abi.encodePacked(baseURI_, _toString(tokenId),".json")) : '';
-        }else{
-            return string(abi.encodePacked("ipfs://unrevealedHash/","hidden.json" ));
-        }
+        
+        return bytes(baseURI_).length != 0 ? string(abi.encodePacked(baseURI_, _toString(tokenId),".json")) : '';
+        
+        
         
     }
      function _startTokenId() internal view virtual override returns (uint256) {
