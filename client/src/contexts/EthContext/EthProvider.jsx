@@ -30,7 +30,7 @@ function EthProvider({ children }) {
   useEffect(() => {
     const tryInit = async () => {
       try {
-        const artifact = require("../../contracts/SimpleStorage.json");
+        const artifact = require("../../contracts/hereForYourSoul.json");
         init(artifact);
       } catch (err) {
         console.error(err);
@@ -46,9 +46,9 @@ function EthProvider({ children }) {
       init(state.artifact);
     };
 
-    events.forEach(e => window.ethereum.on(e, handleChange));
+    events.forEach(e => window.ethereum?.on(e, handleChange));
     return () => {
-      events.forEach(e => window.ethereum.removeListener(e, handleChange));
+      events.forEach(e => window.ethereum?.removeListener(e, handleChange));
     };
   }, [init, state.artifact]);
 
