@@ -28,9 +28,9 @@ const Faq = ({ title, answer }) => {
                 <h4 className="ml-2 mr-6 text-md font-bold">{title}</h4>
                 <div className="p-1 border-2 border-red-500">
                   {!active ? (
-                    <PlusIcon className={`h-5 w-5 transition-all duration-200 ${!active ? "opacity-100" : "opacity-0"}`} />
+                    <PlusIcon className={`h-5 w-5 transition-all fadeIn duration-200 ${!active ? "opacity-100" : "opacity-0"}`} />
                   ) : (
-                    <MinusIcon className={`h-5 w-5 transition-all duration-200 ${active ? "opacity-100" : "opacity-0"}`} />
+                    <MinusIcon className={`h-5 w-5 transition-all fadeIn duration-200 ${active ? "opacity-100" : "opacity-0"}`} />
                   )}
                 </div>
               </div>
@@ -38,7 +38,7 @@ const Faq = ({ title, answer }) => {
                 ref={contentRef}
                 className={`${
                   active && `ml-6 mr-16 mb-8`
-                }  overflow-hidden text-left `}
+                }  overflow-hidden text-left fadeIn `}
               >
                 <p>{answer}</p>
               </div>

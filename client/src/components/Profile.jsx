@@ -8,9 +8,11 @@ const Profile = ({ img, name, role }) => {
       {role.length < 8 ? (
         <p className="font-thin text-lg mt-1">{role}</p>
       ) : (
-        role
-          .split(" ")
-          .map((r) => <p className="font-thin text-lg mt-1">{r}</p>)
+        role.split(" ").map((r, idx) => (
+          <p key={idx} className="font-thin text-lg mt-1">
+            {r}
+          </p>
+        ))
       )}
     </div>
   );
