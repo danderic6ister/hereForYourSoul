@@ -1,3 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@font-face {
+  font-family: "dracula";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./utilities/Fonts/dracula.ttf") format("truetype");
+}
+@font-face {
+  font-family: "dracula";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./utilities/Fonts/dracula.ttf") format("truetype");
+}
+@font-face {
+  font-family: "dracula";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./utilities/Fonts/dracula.ttf") format("truetype");
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
+
+.font-dracula {
+  font-family: "dracula", sans-serif;
+}
+
+.bg-landingImage {
+  background-image: url("https://res.cloudinary.com/dixvcadud/image/upload/v1657659045/hereForYourSoul/bluewizard_social_1_mknejt.png");
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 480px) {
+  .bg-landingImage {
+    background-image: url("https://res.cloudinary.com/dixvcadud/image/upload/v1657813643/hereForYourSoul/bluewizard_social_wkpot4.jpg");
+  }
+}
+
+.bg-wizard-gradient {
+  background: linear-gradient(
+    124.51deg,
+    rgba(213, 23, 23, 0.1) 32.86%,
+    #000000 82.67%,
+    #000000 91.15%
+  );
+}
+@media screen and (min-width: 1024px) {
+  .bg-wizard-gradient {
+    background: black;
+  }
+}
+
+.bg-faq {
+  background: linear-gradient(164.3deg, #000000 3.97%, #150404 100%);
+}
+
+.bg-gray {
+  background: #35323e;
+}
+
 #App {
   width: 100%;
   height: 100%;
@@ -65,16 +129,6 @@ details summary {
   cursor: pointer;
 }
 
-p,
-details code {
-  margin-top: 1rem;
-  margin-bottom: 1.4rem;
-}
-
-p {
-  line-height: 2.6rem;
-}
-
 p span.code {
   font-family: monospace;
   color: var(--gray);
@@ -109,7 +163,7 @@ hr {
   border-radius: 0 1rem 1rem 0;
 }
 
-#App .container .demo .contract-container .btns>* {
+#App .container .demo .contract-container .btns > * {
   width: 12rem;
   display: flex;
   align-items: center;
@@ -122,7 +176,7 @@ hr {
   cursor: pointer;
 }
 
-#App .container .demo .contract-container .btns>*:hover {
+#App .container .demo .contract-container .btns > *:hover {
   background-color: var(--dark-gray);
 }
 
