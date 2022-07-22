@@ -1,25 +1,25 @@
-import { EthProvider } from "./contexts/EthContext";
-import Intro from "./components/Intro/";
-import Setup from "./components/Setup";
-import Demo from "./components/Demo";
-import Footer from "./components/Footer";
-import "./App.css";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Landing } from "./routes";
 
 function App() {
   return (
-    <EthProvider>
-      <div id="App" >
-        <div className="container">
-          <Intro />
-          <hr />
-          <Setup />
-          <hr />
-          <Demo />
-          <hr />
-          <Footer />
-        </div>
-      </div>
-    </EthProvider>
+    <Router>
+      <Suspense
+        fallback={
+          <div
+            className="flex items-center flex-col 
+                    min-h-screen justify-center"
+          >
+            <span className="text-gray-500 text-2xl mt-4">Loading...</span>
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Landing />} />
+        </Routes>
+      </Suspense>
+    </Router>
   );
 }
 
