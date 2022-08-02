@@ -5,10 +5,19 @@ import { wizardImages } from "../../utilities";
 import Faq from "../Faq";
 import Profile from "../Profile";
 import { faq, team } from "../../utilities";
+import { countdown } from "../../utilities/functions";
 
 const Home = () => {
   const [counter, setCounter] = useState(0);
   const [image, setImage] = useState(wizardImages[counter]);
+  const [countDownDate, setCountDownDate] = useState({});
+
+  useEffect(() => {
+    let t = setTimeout(() => {
+      setCountDownDate(countdown("2022-09-10"));
+    }, 1000);
+    return () => clearTimeout(t);
+  }, [countDownDate]);
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -25,16 +34,36 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="bg-landingImage flex flex-col justify-center items-center">
+      <div className="bg-landingImage fadeIn flex flex-col justify-center items-center">
         <h2 className="uppercase text-white font-bold text-4xl lg:text-7xl lg:font-extrabold mb-10">
           The Soul Taker
         </h2>
         <button className="bg-black border-4 border-red-500 rounded-full p-6 mb-10 text-white uppercase">
           Mint Now
         </button>
-        <button className="bg-black border-4 border-red-500 rounded-full p-6 text-white uppercase">
-          Mint Now
-        </button>
+        {countDownDate.days > 0 && (
+          <div className="bg-black border-4 fadeIn flex flex-row border-red-500 rounded-full p-6 text-white uppercase">
+            <>
+              {" "}
+              <div className="flex flex-col items-center mr-4 ml-4">
+                <p>{countDownDate.days}</p>
+                <p>DAYS</p>
+              </div>
+              <div className="flex flex-col items-center mr-4">
+                <p>{countDownDate.hours}</p>
+                <p>HOURS</p>
+              </div>
+              <div className="flex flex-col items-center mr-4">
+                <p>{countDownDate.mins}</p>
+                <p>MINS</p>
+              </div>
+              <div className="flex flex-col items-center mr-4">
+                <p>{countDownDate.secs}</p>
+                <p>SECS</p>
+              </div>
+            </>
+          </div>
+        )}
       </div>
       <div className="flex flex-col lg:flex-row">
         <div className="bg-black mx-auto lg:px-10 text-center lg:w-1/2">
@@ -91,11 +120,13 @@ const Home = () => {
           </div>
         </div>
         <div className="mt-1 md:w-1/2 md:mx-auto">
-          {faq.map((f) => (
-            <Faq
-              title={f.title}
-              answer="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad"
-            />
+          {faq.map((f, idx) => (
+            <div key={idx}>
+              <Faq
+                title={f.title}
+                answer="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad"
+              />
+            </div>
           ))}
         </div>
       </div>

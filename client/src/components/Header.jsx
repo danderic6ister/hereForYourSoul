@@ -6,6 +6,7 @@ import Bell from "../utilities/icons/Bell";
 import Ship from "../utilities/icons/Ship";
 import TwitterIcon from "../utilities/icons/Twitter";
 import { useEffect } from "react";
+import EtherScanLogo from "../utilities/icons/EtherScanLogo";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -45,18 +46,21 @@ const Header = () => {
 
   return (
     <>
-      <Disclosure as="nav" className="z-20 w-screen overflow-hidden bg-black">
+      <Disclosure
+        as="nav"
+        className="z-20 w-screen fadeIn overflow-hidden bg-black"
+      >
         {({ open }) => (
           <>
-            <div className="max-w-7xl mx-auto py-2 sm:py-4 px-2">
+            <div className="max-w-7xl mx-auto py-2 sm:py-4 px-2 ">
               <div className="relative flex z-10 items-center justify-between h-16">
                 <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
                   <div className="flex flex-row">
                     <div className="mr-6">
-                      <Bell />
+                      <EtherScanLogo />
                     </div>
-                    <div className="mr-10">
+                    <div className="mr-8">
                       <Ship />
                     </div>
                   </div>
@@ -101,7 +105,7 @@ const Header = () => {
                     </div>
                     <div className="flex flex-row items-center">
                       <div className="md:mr-16 lg:mr-20">
-                        <Bell />
+                        <EtherScanLogo />
                       </div>
                       <div className="mr-10">
                         <Ship />
@@ -112,8 +116,8 @@ const Header = () => {
               </div>
             </div>
 
-            <Disclosure.Panel className="sm:hidden h-screen bg-black">
-              <div className="px-2 animate-slideUp-header pt-2 pb-3 flex flex-col mt-10">
+            <Disclosure.Panel className="sm:hidden h-screen bg-menu fadeIn">
+              <div className="px-2 animate-slideUp-header pb-3 flex flex-col pt-32">
                 {navigation.map((item) => (
                   <Link
                     to={item.href}
@@ -136,10 +140,10 @@ const Header = () => {
                     <TwitterIcon />
                   </div>
                   <div className="mr-6">
-                    <Bell />
+                    <Ship />
                   </div>
                   <div className="">
-                    <Ship />
+                    <EtherScanLogo />
                   </div>
                 </div>
               </div>
