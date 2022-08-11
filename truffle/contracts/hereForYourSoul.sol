@@ -5,12 +5,16 @@ pragma solidity ^0.8.4;
 import "../node_modules/erc721a/contracts/ERC721A.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 import "../node_modules/@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
-contract HereForYourSoul is ERC721A,Ownable{
+contract HereForYourSoul is ERC721A,Ownable
+{
     // @dev set the total supply of the collection
-    uint256 public altarSupply = 5555;
+    uint256 public altarSupply = 6666;
     
     //@dev sets the amount minted to the teams vault
-    uint256 public  immutable  mintToCOVEN = 55;
+    uint256 public  immutable  mintToCOVEN = 33;
+    //@dev Converts more souls 
+    uint256 public immutable toconvertmoresouls = 33;
+    uint256 private soulsconverted;
     
     uint256 public immutable maxTx = 1;
     uint256 public immutable sorcererMint = 2;
@@ -30,7 +34,7 @@ contract HereForYourSoul is ERC721A,Ownable{
     mapping(address => bool ) public sentTxAsSorcerer;
     mapping(address => bool) public txSentAsCommon;
 
-    constructor()ERC721A("HereForYourSoul","H4YourSoul"){}
+    constructor()ERC721A("SoulTakers","SoulTKRS"){}
 
     function toggleCommonsMint() external onlyOwner{
         commonsMintIsActive = !commonsMintIsActive;
@@ -43,13 +47,21 @@ contract HereForYourSoul is ERC721A,Ownable{
         teamHasClaimed = true;
 
     }
+    function convertMoreSouls(address soultakers,uint256 _soulTKRS) public onlyOwner{
+       
+  	   
+	    require(soulsconverted + _soulTKRS <= toconvertmoresouls,"Would exceed supply");
+        _safeMint(soultakers, _soulTKRS);
+        soulsconverted +=_soulTKRS;
+    }
 
+    
     function _baseURI() internal override view returns(string memory){
         return baseURI;
     }
     
 
-    function isBlessed(bytes32[] calldata proof) internal view returns(bool){
+    function isBlessed(bytes32[] calldata proof) public view returns(bool){
         bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
         return MerkleProof.verify(proof, merkleRoot, leaf);
     }
@@ -63,10 +75,9 @@ contract HereForYourSoul is ERC721A,Ownable{
         require(isBlessed(proof),"You have not been whitelisted,try your luck in Common's Mint"); 
         require(amount > 0 && amount <= sorcererMint,"c");
         require(!sentTxAsSorcerer[msg.sender],"You can't send more than 1 tx.");
-        // Saves GAs
-        // require(mintPerformedAsSorcerer[msg.sender] < sorcererMint, "You can't mint more than 2");
+       
         uint totalsupply = totalSupply();
-        uint availableToMint = altarSupply -mintToCOVEN;
+        uint availableToMint = altarSupply -mintToCOVEN-toconvertmoresouls;
         require((totalsupply + amount)  <= availableToMint , "Minted Out.");
         _mint(msg.sender,amount);
 
@@ -83,7 +94,7 @@ contract HereForYourSoul is ERC721A,Ownable{
         // require(amount == commonsMint,"Can't mint more or less than 1 ");
         require(!txSentAsCommon[msg.sender],"You have sent a tx.");
         uint totalsupply = totalSupply();
-        uint availableToMint = altarSupply -mintToCOVEN;
+        uint availableToMint = altarSupply -mintToCOVEN-toconvertmoresouls;
         require((totalsupply + 1)  <= availableToMint , "Minted Out.");
         _mint(msg.sender,1);
 
@@ -102,11 +113,16 @@ contract HereForYourSoul is ERC721A,Ownable{
         
         
     }
-     function _startTokenId() internal view virtual override returns (uint256) {
+    function funds() public payable onlyOwner 
+    {
+	    (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
+		require(success);
+	}
+    function _startTokenId() internal view virtual override returns (uint256) {
         return 1;
     }
 
-}   
+}
 // 
 // ["0x7d22b128e982b43eb57c7a0142761c730c5dee9f489bf8b5d1b4c5022f5c2e8f","0x04a01326e014116187743337e92dfe097ae3600f491c6d45f09f8f3f883c9437"] 
 
